@@ -106,7 +106,7 @@ export default function AdminProductsPage() {
                           </svg>
                         </Link>
                         <Link
-                          href={`/admin/edit-product/${p.id}`}
+                          href={`/admin/edit-product?id=${p.id}`}
                           className="p-2.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all"
                           title="Edit"
                         >

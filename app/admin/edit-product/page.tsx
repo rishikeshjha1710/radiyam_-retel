@@ -1,17 +1,15 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-export const dynamicParams = true;
-
-import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getProductById, updateProduct } from "@/lib/firestore";
 import { useAuth } from "@/context/AuthContext";
 import type { Product } from "@/types";
 
-export default function EditProductPage() {
+function EditProductContent() {
   const router = useRouter();
-  const { id } = useParams();
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const { isAdmin, loading: authLoading } = useAuth();
   const [form, setForm] = useState<Omit<Product, "id"> | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,7 +24,7 @@ export default function EditProductPage() {
 
   useEffect(() => {
     if (id) {
-      getProductById(id as string).then((p) => {
+      getProductById(id).then((p) => {
         if (p) {
           const { id: _, ...rest } = p;
           setForm(rest);
@@ -44,7 +42,7 @@ export default function EditProductPage() {
     setError("");
     setSaving(true);
     try {
-      await updateProduct(id as string, {
+      await updateProduct(id, {
         ...form,
         price: Number(form.price) || 0,
         stars: Math.min(5, Math.max(0, Number(form.stars) || 0)),
@@ -58,13 +56,13 @@ export default function EditProductPage() {
     }
   };
 
-  if (authLoading || loading) return <p className="p-8">Loading product data...</p>;
+  if (authLoading || loading) return <p className="p-8 text-center text-gray-400 font-bold uppercase tracking-widest text-xs animate-pulse">Loading product inventory unit...</p>;
   if (!isAdmin || !form) return null;
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <div className="mb-10 text-center md:text-left">
-        <h1 className="text-4xl font-black text-gray-900 tracking-tight mb-2">Edit Masterpiece</h1>
+        <h1 className="text-4xl font-black text-gray-900 tracking-tight mb-2 italic">Edit Masterpiece.</h1>
         <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">Modify your premium collection item</p>
       </div>
 
@@ -204,5 +202,13 @@ export default function EditProductPage() {
         </div>
       </form>
     </div>
+  );
+}
+
+export default function EditProductPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-gray-400 uppercase tracking-widest text-[10px] font-black">Decrypting Collection Unit...</div>}>
+      <EditProductContent />
+    </Suspense>
   );
 }

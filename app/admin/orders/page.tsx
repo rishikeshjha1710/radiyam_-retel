@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import { getOrdersList } from "@/lib/firestore";
+import Link from "next/link";
 import type { Order } from "@/types";
 
 type DateFilter = "today" | "week" | "month" | "all" | "custom";
@@ -138,16 +139,12 @@ export default function AdminOrdersPage() {
                     <td className="p-4">₹{o.total.toLocaleString("en-IN")}</td>
                     <td className="p-4">{o.paymentStatus || "—"}</td>
                     <td className="p-4 text-right">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedOrder(o);
-                        }}
-                        className="text-indigo-600 hover:underline"
+                      <Link
+                        href={`/admin/orders/details?id=${o.id}`}
+                        className="text-indigo-600 font-bold hover:underline uppercase tracking-widest text-[10px]"
                       >
                         View details
-                      </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
