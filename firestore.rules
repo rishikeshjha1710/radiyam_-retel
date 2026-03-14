@@ -1,16 +1,31 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Products: anyone can read; only authenticated users (admin) can write
+    
+    // Helper: Check if the user is one of the authorized executive admins strictly by phone
+    function isAdmin() {
+      return request.auth != null && 
+             (request.auth.token.phone_number == '+919570729077' || 
+              request.auth.token.phone_number == '+917295893663');
+    }
+
+    // Products: Anyone can view, only Admin can manage
     match /products/{productId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isAdmin();
     }
-    // Orders: only authenticated users (admin) can read; anyone can create (checkout)
+
+    // Users: Users can read/write their own profile, Admin can see all
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if isAdmin();
+    }
+
+    // Orders: Anyone can create (guest/form checkout), Admin has full control
     match /orders/{orderId} {
-      allow read: if request.auth != null;
-      allow create: if true;
-      allow update, delete: if request.auth != null;
+      allow create: if true; 
+      allow read: if isAdmin() || (request.auth != null && resource.data.email == request.auth.token.email);
+      allow update, delete: if isAdmin();
     }
   }
 }
