@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getProductsList } from "@/lib/firestore";
 import { useCart } from "@/context/CartContext";
 import type { Product } from "@/types";
 
-export default function ProductsPage() {
+function ProductsContent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -187,5 +187,13 @@ export default function ProductsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="p-20 text-center font-black uppercase tracking-[0.4em] text-gray-300 animate-pulse">Loading Collection...</div>}>
+      <ProductsContent />
+    </Suspense>
   );
 }
