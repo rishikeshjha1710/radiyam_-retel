@@ -1,0 +1,54 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "title": "Wireless Headphones",
+        "price": 1999,
+        "category": "Electronics",
+        "image": "/products/headphones.jpg",
+        "description": "High quality wireless headphones with deep bass and long battery life.",
+        "rating": 4.5,
+        "stock": 25
+      },
+      {
+        "id": 2,
+        "title": "Smart Watch",
+        "price": 2999,
+        "category": "Electronics",
+        "image": "/products/smartwatch.jpg",
+        "description": "Track fitness, heart rate and notifications with this smart watch.",
+        "rating": 4.3,
+        "stock": 18
+      },
+      {
+        "id": 3,
+        "title": "Running Shoes",
+        "price": 1499,
+        "category": "Fashion",
+        "image": "/products/shoes.jpg",
+        "description": "Lightweight running shoes designed for comfort and performance.",
+        "rating": 4.4,
+        "stock": 30
+      },
+      {
+        "id": 4,
+        "title": "Laptop Backpack",
+        "price": 899,
+        "category": "Accessories",
+        "image": "/products/backpack.jpg",
+        "description": "Durable backpack with laptop compartment and multiple pockets.",
+        "rating": 4.2,
+        "stock": 40
+      },
+      {
+        "id": 5,
+        "title": "Bluetooth Speaker",
+        "price": 1299,
+        "category": "Electronics",
+        "image": "/products/speaker.jpg",
+        "description": "Portable bluetooth speaker with powerful sound.",
+        "rating": 4.6,
+        "stock": 22
+      }
+    ]
+  }
