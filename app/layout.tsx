@@ -29,7 +29,12 @@ export default function RootLayout({
           <footer className="bg-white border-t border-gray-100 py-20 px-6">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
                <div>
-                  <h2 className="text-2xl font-black tracking-tighter mb-4">RADIYAMI<span className="text-indigo-600">.</span></h2>
+                <div className="flex items-center gap-3 mb-4">
+                   <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
+                      <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
+                   </div>
+                   <h2 className="text-2xl font-black tracking-tighter">RADIYAMI<span className="text-indigo-600">.</span></h2>
+                </div>
                   <p className="text-gray-400 font-medium max-w-xs leading-relaxed text-sm">
                     Elevating your living space with premium household solutions and artisanal home care.
                   </p>

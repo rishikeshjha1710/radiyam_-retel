@@ -34,8 +34,8 @@ export default function Navbar() {
             : "bg-transparent"
         }`}>
           <Link href="/" className="flex items-center gap-2 md:gap-3 group shrink-0">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-600 rounded-lg md:rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-indigo-200">
-               <span className="text-white font-black text-lg md:text-xl italic">R</span>
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl overflow-hidden transform group-hover:rotate-6 transition-transform duration-500 shadow-lg shadow-indigo-200">
+               <img src="/logo.jpeg" alt="Radiyami Logo" className="w-full h-full object-cover" />
             </div>
             <span className={`text-base md:text-2xl font-black tracking-tighter transition-colors hidden sm:block ${
               scrolled ? "text-gray-900" : (pathname === "/" ? "text-white" : "text-gray-900")

@@ -81,8 +81,8 @@ export default function LoginPage() {
 
         <div className="relative z-10 text-center">
           <div className="flex justify-center mb-6">
-            <Link href="/" className="w-14 h-14 bg-gray-900 text-white flex items-center justify-center rounded-2xl text-2xl font-black italic shadow-xl transform hover:rotate-6 transition-transform">
-              R
+            <Link href="/" className="w-16 h-16 rounded-2xl overflow-hidden shadow-2xl transform hover:rotate-6 transition-transform">
+              <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
             </Link>
           </div>
           <h2 className="text-4xl font-black text-gray-900 tracking-tighter italic uppercase">

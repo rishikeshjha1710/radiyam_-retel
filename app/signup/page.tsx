@@ -59,8 +59,8 @@ export default function SignupPage() {
 
         <div className="relative z-10 text-center">
           <div className="flex justify-center mb-6">
-            <Link href="/" className="w-16 h-16 bg-gray-900 text-white flex items-center justify-center rounded-2xl text-2xl font-black italic shadow-2xl transform hover:scale-110 transition-transform">
-              R
+            <Link href="/" className="w-20 h-20 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-110 transition-transform">
+              <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
             </Link>
           </div>
           <h2 className="text-4xl font-black text-gray-900 tracking-tighter italic uppercase">

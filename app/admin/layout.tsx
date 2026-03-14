@@ -59,8 +59,8 @@ export default function AdminLayout({
       <aside className="w-80 bg-white border-r border-gray-100 flex flex-col p-8 fixed h-full z-50">
         <div className="mb-12">
           <Link href="/" className="flex items-center gap-3 group">
-             <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black italic shadow-lg group-hover:rotate-12 transition-all">
-                R
+             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:rotate-6 transition-all">
+                <img src="/logo.jpeg" alt="Logo" className="w-full h-full object-cover" />
              </div>
              <span className="text-xl font-black tracking-tighter italic">RADIYAMI<span className="text-indigo-600">.</span></span>
           </Link>
